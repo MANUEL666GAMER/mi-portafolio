@@ -7,7 +7,9 @@ const skills = [
   { name: "Dart & Flutter", icon: "Smartphone" },
   { name: "C# & .NET", icon: "Terminal" },
   { name: "C++ Base", icon: "Cpu" },
-  { name: "Desarrollo Web", icon: "Globe" }
+  { name: "Desarrollo Web", icon: "Globe" },
+  { name: "PHP", icon: "Database" },
+
 ];
 
 const About = () => {

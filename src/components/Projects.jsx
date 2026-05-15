@@ -1,5 +1,9 @@
 import React from 'react';
 import * as LucideIcons from 'lucide-react';
+import avastudioImg from '../assets/avastudio.png';
+import AurumbankImg from '../assets/Aurumbank.png';
+import FLowersImg from '../assets/Flowers.png';
+ // Asegúrate de tener esta imagen en tu carpeta de assets
 
 const projectData = [
   {
@@ -8,7 +12,7 @@ const projectData = [
     tech: ["Html", "CSS", "Js"],
     link: "https://avastudio.com.mx/", // Pon el link de Vercel/Netlify aquí
     github: "https://github.com/MANUEL666GAMER/tu-repo",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600" 
+    image: avastudioImg // Pon la ruta de tu imagen aquí
   },
   {
     title: "Página Web de banco ficticio",
@@ -16,7 +20,7 @@ const projectData = [
     tech: ["HTML5", "CSS3", "JavaScript, Diseño UI"],
     link: "https://aurumbank.onrender.com/",
     github: "https://github.com/MANUEL666GAMER",
-    image: "https://images.unsplash.com/photo-1438232992991-995b7058bbb3?w=600"
+    image: AurumbankImg
   },
   {
     title: "Flores",
@@ -24,7 +28,7 @@ const projectData = [
     tech: ["HTML5", "CSS3", "JavaScript"],
     link: "https://flowersforyou-pzfn.onrender.com/",
     github: "https://github.com/MANUEL666GAMER",
-    image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600"
+    image: FLowersImg
   }
 ];
 
