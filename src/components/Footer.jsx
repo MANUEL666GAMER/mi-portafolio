@@ -54,14 +54,14 @@ const Footer = () => {
               <span className="w-2 h-2 bg-emerald-500 rounded-full"></span>
               Disponible para nuevas oportunidades
             </li>
-            <li>hola@ejemplo.com</li>
-            <li>Ciudad de México, MX</li>
+            <li>manuelyovaniperez@gmailcom</li>
+            <li>Cancun,Quintana Roo</li>
           </ul>
         </div>
       </div>
 
       <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-slate-800/50 gap-4">
-        <p className="text-slate-500 text-xs">© 2026 Alejandro. Todos los derechos reservados.</p>
+        <p className="text-slate-500 text-xs">© 2026 ManuelPerez. Todos los derechos reservados.</p>
         <p className="text-slate-500 text-xs flex items-center gap-1">
           Hecho con <HeartIcon size={12} className="text-emerald-500 fill-emerald-500" /> y React
         </p>
