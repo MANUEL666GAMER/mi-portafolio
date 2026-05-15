@@ -1,0 +1,17 @@
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body {
+    @apply bg-[#030712] text-slate-200 antialiased;
+  }
+}
+
+@utility text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-emerald-400;
+}
+
+@utility glass-card {
+  @apply bg-[#0f172a] border border-slate-800 rounded-3xl overflow-hidden hover:border-slate-700 transition-all;
+}
