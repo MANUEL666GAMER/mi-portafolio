@@ -1,6 +1,6 @@
 import React from 'react';
 import * as LucideIcons from 'lucide-react';
-import avastudioImg from '../assets/avastudio.png';
+import avastudioImg from '../assets/avaStudio.png';
 import AurumbankImg from '../assets/Aurumbank.png';
 import FLowersImg from '../assets/Flowers.png';
  // Asegúrate de tener esta imagen en tu carpeta de assets
