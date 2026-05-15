@@ -53,8 +53,10 @@ const personalProjects = [
     icon: Layout,
     github: "https://github.com/MANUEL666GAMER",
     screenshots: [
-      "https://images.unsplash.com/photo-1507238692062-2a042f7e37e5?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1000&auto=format&fit=crop"
+      "/COTIZACION/index.png",
+      "/COTIZACION/nueva.png",
+      "/COTIZACION/list.png",
+      "/COTIZACION/editbunisses.png",
     ]
   }
 ];
