@@ -7,7 +7,8 @@ import {
   Eye, 
   X, 
   Code, 
-  ExternalLink 
+  ExternalLink,
+  ZoomIn 
 } from 'lucide-react';
 
 // --- TUS DATOS REALES ---
@@ -19,9 +20,9 @@ const personalProjects = [
     tags: ["React", "Node.js", "PostgreSQL", "Prisma", "Docker"],
     icon: Monitor,
     github: "https://github.com/MANUEL666GAMER",
-    // Imágenes placeholder (puedes cambiarlas luego por tus propias capturas)
+    demo: "", // Puedes agregar el enlace si lo despliegas
     screenshots: [
-        "/POSGYM/login.png",
+      "/POSGYM/login.png",
       "/POSGYM/incio.png",
       "/POSGYM/dashboard.png",
       "/POSGYM/client.png",
@@ -36,6 +37,7 @@ const personalProjects = [
     tags: ["PHP", "MVC", "MySQL","Css"],
     icon: Database,
     github: "https://github.com/MANUEL666GAMER",
+    demo: "",
     screenshots: [
       "/INVENTARIO/login.png",
       "/INVENTARIO/home.png",
@@ -46,27 +48,31 @@ const personalProjects = [
     ]
   },
   {
-    id: "App Cotizacion",
+    id: "app-cotizacion",
     title: "App de Cotización",
     description: "Aplicación para generar cotizaciones rápidas y genera pdf para compartirlos.",
     tags: ["dart", "flutter","SQLITE"],
     icon: Layout,
     github: "https://github.com/MANUEL666GAMER",
+    demo: "",
     screenshots: [
       "/COTIZACION/index.png",
       "/COTIZACION/nueva.png",
       "/COTIZACION/list.png",
-      "/COTIZACION/editbunisses.png",
+      "/COTIZACION/editbunisses.png", 
     ]
   }
 ];
 
 const PersonalProjects = () => {
+  // Estado Nivel 1: Proyecto seleccionado para la galería
   const [selectedProject, setSelectedProject] = useState(null);
+  // Estado Nivel 2: Imagen a pantalla completa
+  const [selectedImage, setSelectedImage] = useState(null);
 
-  // Bloquear el scroll del body cuando el modal está abierto
+  // Bloquear el scroll del body cuando algún modal esté activo
   useEffect(() => {
-    if (selectedProject) {
+    if (selectedProject || selectedImage) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'unset';
@@ -74,11 +80,12 @@ const PersonalProjects = () => {
     return () => {
       document.body.style.overflow = 'unset';
     };
-  }, [selectedProject]);
+  }, [selectedProject, selectedImage]);
 
   return (
     <section id="proyectos-personales" className="py-24 bg-slate-50 dark:bg-[#030712] transition-colors duration-300">
       <div className="container mx-auto px-6 lg:px-12">
+        
         {/* ENCABEZADO */}
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-6 mb-12">
           <div>
@@ -98,7 +105,7 @@ const PersonalProjects = () => {
             return (
               <div 
                 key={project.id} 
-                className="bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800 rounded-2xl p-8 flex flex-col hover:border-blue-500/50 dark:hover:border-blue-500/50 transition-colors shadow-sm dark:shadow-none h-full relative group"
+                className="bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800 rounded-2xl p-8 flex flex-col hover:border-blue-500/50 dark:hover:border-blue-500/50 transition-all shadow-sm dark:shadow-none h-full relative group hover:shadow-md"
               >
                 {/* Cabecera de la Tarjeta */}
                 <div className="flex justify-between items-start mb-6">
@@ -156,14 +163,14 @@ const PersonalProjects = () => {
         </div>
       </div>
 
-      {/* MODAL DE GALERÍA (Framer Motion) */}
+      {/* MODAL NIVEL 1: GALERÍA DEL PROYECTO */}
       <AnimatePresence>
         {selectedProject && (
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 dark:bg-black/60 backdrop-blur-sm"
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/80 dark:bg-black/80 backdrop-blur-sm"
             onClick={() => setSelectedProject(null)}
           >
             <motion.div 
@@ -172,10 +179,10 @@ const PersonalProjects = () => {
               exit={{ scale: 0.95, opacity: 0, y: 20 }}
               transition={{ type: 'spring', damping: 25, stiffness: 300 }}
               className="bg-white dark:bg-[#0f172a] w-full max-w-4xl max-h-[90vh] rounded-2xl shadow-2xl overflow-hidden flex flex-col border border-slate-200 dark:border-slate-800"
-              onClick={(e) => e.stopPropagation()} // Evita que al hacer clic dentro se cierre
+              onClick={(e) => e.stopPropagation()}
             >
-              {/* Modal Header (Fijo) */}
-              <div className="sticky top-0 z-10 flex items-center justify-between p-5 bg-white/90 dark:bg-[#0f172a]/90 backdrop-blur-md border-b border-slate-100 dark:border-slate-800">
+              {/* Header Fijo */}
+              <div className="sticky top-0 z-10 flex items-center justify-between p-5 bg-white/95 dark:bg-[#0f172a]/95 backdrop-blur-md border-b border-slate-100 dark:border-slate-800">
                 <div className="flex items-center gap-3">
                   <div className="p-2 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-lg">
                     <selectedProject.icon size={20} />
@@ -187,20 +194,20 @@ const PersonalProjects = () => {
                 <button 
                   onClick={() => setSelectedProject(null)}
                   className="p-2 text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-white bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 rounded-full transition-colors cursor-pointer"
-                  aria-label="Cerrar modal"
+                  aria-label="Cerrar galería"
                 >
                   <X size={20} />
                 </button>
               </div>
 
-              {/* Modal Body (Scrollable) */}
-              <div className="p-6 overflow-y-auto">
-                <div className="mb-8">
-                  <p className="text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
+              {/* Contenido con Scroll */}
+              <div className="p-6 overflow-y-auto space-y-6">
+                <div>
+                  <p className="text-slate-600 dark:text-slate-300 leading-relaxed mb-4 text-sm md:text-base">
                     {selectedProject.description}
                   </p>
                   <div className="flex flex-wrap gap-2">
-                    {selectedProject.tags.map(tag => (
+                    {selectedProject.tags.map((tag) => (
                       <span key={`modal-tag-${tag}`} className="text-xs font-bold px-3 py-1 bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-400 rounded-md border border-blue-100 dark:border-blue-900/50">
                         {tag}
                       </span>
@@ -209,25 +216,69 @@ const PersonalProjects = () => {
                 </div>
 
                 {/* Grid de Capturas */}
-                <h4 className="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-4 border-b border-slate-100 dark:border-slate-800 pb-2">
-                  Galería del Proyecto
-                </h4>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {selectedProject.screenshots.map((imgUrl, index) => (
-                    <div 
-                      key={index} 
-                      className="rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-900 aspect-video relative group"
-                    >
-                      <img 
-                        src={imgUrl} 
-                        alt={`Captura ${index + 1} de ${selectedProject.title}`} 
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                        loading="lazy"
-                      />
-                    </div>
-                  ))}
+                <div>
+                  <h4 className="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-4 border-b border-slate-100 dark:border-slate-800 pb-2">
+                    Capturas de Pantalla ({selectedProject.screenshots.length})
+                  </h4>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {selectedProject.screenshots.map((imgUrl, index) => (
+                      <div 
+                        key={index} 
+                        onClick={() => setSelectedImage(imgUrl)}
+                        className="rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-900 aspect-video relative group cursor-zoom-in shadow-sm"
+                      >
+                        <img 
+                          src={imgUrl} 
+                          alt={`Captura ${index + 1} de ${selectedProject.title}`} 
+                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                          loading="lazy"
+                        />
+                        <div className="absolute inset-0 bg-slate-950/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[1px]">
+                          <div className="p-3 bg-white/10 backdrop-blur-md rounded-full text-white scale-75 group-hover:scale-100 transition-transform duration-300">
+                            <ZoomIn size={24} />
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* MODAL NIVEL 2: LIGHTBOX A PANTALLA COMPLETA */}
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-slate-950/95 backdrop-blur-xl"
+            onClick={() => setSelectedImage(null)}
+          >
+            <button
+              onClick={() => setSelectedImage(null)}
+              className="fixed top-6 right-6 p-3 text-slate-400 hover:text-white bg-slate-900/50 hover:bg-slate-800/80 border border-slate-800 rounded-full transition-colors z-[70] cursor-pointer"
+              aria-label="Cerrar vista completa"
+            >
+              <X size={24} />
+            </button>
+
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              transition={{ type: 'spring', damping: 25 }}
+              className="relative max-w-5xl w-full flex items-center justify-center"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <img 
+                src={selectedImage} 
+                alt="Visualización ampliada" 
+                className="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl border border-slate-900"
+              />
             </motion.div>
           </motion.div>
         )}
