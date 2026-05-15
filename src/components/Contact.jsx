@@ -24,9 +24,9 @@ const Contact = () => {
     setStatus("enviando");
 
     // REEMPLAZA ESTOS DATOS CON LOS TUYOS DE EMAILJS
-    const SERVICE_ID = "service_xxxxxx"; 
-    const TEMPLATE_ID = "template_xxxxxx";
-    const PUBLIC_KEY = "tu_public_key";
+    const SERVICE_ID = "service_kzvsf7x"; 
+    const TEMPLATE_ID = "template_psnmn9j";
+    const PUBLIC_KEY = "v4UzbA43WWyaD0XvK";
 
     emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form.current, PUBLIC_KEY)
       .then((result) => {
