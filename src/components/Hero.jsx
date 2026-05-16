@@ -1,5 +1,5 @@
 import React from 'react';
-import {Download, Code, Briefcase} from 'lucide-react';
+import {Download, Code, Briefcase,FileDown} from 'lucide-react';
 
 const Hero = () => {
   return (
@@ -22,6 +22,16 @@ const Hero = () => {
         
         {/* BOTONES */}
         <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
+
+<a 
+    href="/CV/MANUEL_YOVANI_PEREZ_ALEGRIA.pdf" /* Ruta al archivo en la carpeta public */
+    download="MANUEL_YOVANI_PEREZ_ALEGRIA.pdf" /* Atributo que obliga a la descarga */
+    className="flex items-center justify-center gap-2 px-6 py-3 bg-white dark:bg-slate-800 border-2 border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 font-bold rounded-xl hover:bg-blue-50 dark:hover:bg-slate-700 transition-colors w-full sm:w-auto"
+  >
+    <FileDown size={20} />
+    Descargar CV
+  </a>
+
           <a 
             href="#proyectos-personales" 
             className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-colors w-full sm:w-auto text-center"

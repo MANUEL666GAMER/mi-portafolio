@@ -9,20 +9,30 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 
 function App() {
-  // 1. Estado para controlar el modo oscuro
-  const [dark, setDark] = useState(false);
+  // 1. Estado con memoria (localStorage)
+  const [dark, setDark] = useState(() => {
+    // Revisa si ya hay un tema guardado de una visita anterior
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      return savedTheme === 'dark';
+    }
+    // Si no hay nada guardado, lee si la computadora del usuario usa modo oscuro
+    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+  });
 
-  // 2. Efecto para aplicar/quitar la clase 'dark' a la etiqueta <html>
+  // 2. Efecto para aplicar/quitar la clase 'dark' y GUARDAR la decisión
   useEffect(() => {
     if (dark) {
       document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark'); // Guardamos en el navegador
     } else {
       document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light'); // Guardamos en el navegador
     }
   }, [dark]);
 
   return (
-    // 3. Contenedor principal para toda la pantalla (maneja los colores de fondo generales)
+    // 3. Contenedor principal para toda la pantalla
     <div className="min-h-screen bg-white text-slate-900 dark:bg-[#030712] dark:text-white transition-colors duration-300">
       
       {/* Tu contenedor original que centra el contenido */}
