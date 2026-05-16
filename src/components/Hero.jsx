@@ -1,5 +1,5 @@
 import React from 'react';
-import { Download, Github, Linkedin } from 'lucide-react';
+import {Download, Code, Briefcase} from 'lucide-react';
 
 const Hero = () => {
   return (
@@ -30,10 +30,10 @@ const Hero = () => {
           </a>
           <div className="flex items-center gap-4">
             <a href="https://github.com/MANUEL666GAMER" target="_blank" rel="noopener noreferrer" className="p-3 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-white rounded-xl transition-colors">
-              <Github size={20} />
+              <Code size={20} />
             </a>
             <a href="#" target="_blank" rel="noopener noreferrer" className="p-3 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-white rounded-xl transition-colors">
-              <Linkedin size={20} />
+              <Briefcase size={20} />
             </a>
           </div>
         </div>
@@ -41,14 +41,14 @@ const Hero = () => {
 
       {/* FOTO (Lado Derecho) */}
       <div className="flex-1 flex justify-center md:justify-end">
-        {/* Contenedor de la imagen con efecto de bordes */}
+        
         <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-8 border-white dark:border-[#0f172a] shadow-2xl group">
           <img
-            src="/MYIMG/YO.jpg"  /* <-- AQUÍ ESTÁ LLAMANDO A TU FOTO */
+            src="/MYIMG/YO.jpg"  
             alt="Manuel Yovani Pérez"
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
           />
-          {/* Fondo decorativo detrás de la imagen (opcional) */}
+          
           <div className="absolute inset-0 bg-blue-600/10 dark:bg-blue-400/10 mix-blend-overlay"></div>
         </div>
       </div>
