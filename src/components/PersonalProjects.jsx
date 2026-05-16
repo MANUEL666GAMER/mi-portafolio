@@ -60,6 +60,8 @@ const personalProjects = [
       "/COTIZACION/nueva.png",
       "/COTIZACION/list.png",
       "/COTIZACION/editbunisses.png", 
+      "/COTIZACION/pdf.png", 
+
     ]
   }
 ];
