@@ -1,55 +1,58 @@
 import React from 'react';
-import * as LucideIcons from 'lucide-react';
+import { Download, Github, Linkedin } from 'lucide-react';
 
 const Hero = () => {
-  const getIcon = (name) => LucideIcons[name] || LucideIcons[name.charAt(0).toUpperCase() + name.slice(1)] || LucideIcons.Code;
-  
-  const GithubIcon = getIcon('github');
-  const LinkedinIcon = getIcon('linkedin');
-  const ArrowIcon = getIcon('arrowRight');
-
   return (
-    <section className="flex flex-col lg:flex-row items-center justify-between py-20 gap-12">
-      <div className="flex-1 space-y-8">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm font-medium">
-          <span className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
-          9° Cuatrimestre • UPQROO
-        </div>
-        
-        <h1 className="text-6xl md:text-8xl font-black tracking-tight text-white">
-          Hola, soy <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-emerald-400">Manuel Yovani</span>
+    <section id="inicio" className="pt-32 pb-20 flex flex-col-reverse md:flex-row items-center justify-between gap-12">
+      
+      {/* TEXTO (Lado Izquierdo) */}
+      <div className="flex-1 text-center md:text-left">
+        <span className="text-blue-600 dark:text-blue-400 font-bold tracking-wider uppercase text-sm mb-4 block">
+          FullStack Developer
+        </span>
+        <h1 className="text-5xl md:text-6xl font-black mb-6 text-slate-900 dark:text-white leading-tight">
+          Hola, soy <br/>
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400">
+            Manuel Yovani
+          </span>
         </h1>
-        
-        <h2 className="text-2xl md:text-3xl font-bold text-slate-400">
-          Desarrollador FullStack en formación
-        </h2>
-        
-        <p className="text-slate-500 max-w-lg text-lg leading-relaxed">
-          Estudiante de Ingeniería en Software apasionado por crear soluciones tanto en Frontend como en Backend. No me cierro a ninguna tecnología: si hay algo nuevo que aprender, ahí estaré.
+        <p className="text-lg text-slate-600 dark:text-slate-400 mb-8 max-w-lg mx-auto md:mx-0 leading-relaxed">
+          Desarrollador de software especializado en crear soluciones web y de escritorio eficientes, con experiencia en bases de datos y arquitecturas sólidas.
         </p>
-
-        <div className="flex items-center gap-4">
-          <a href="#proyectos" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-bold flex items-center gap-2 transition-all">
-            Mis proyectos <ArrowIcon size={20} />
+        
+        {/* BOTONES */}
+        <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
+          <a 
+            href="#proyectos-personales" 
+            className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-colors w-full sm:w-auto text-center"
+          >
+            Ver mis proyectos
           </a>
-          <a href="https://github.com/MANUEL666GAMER" target="_blank" className="p-4 bg-slate-800 hover:bg-slate-700 rounded-xl transition-colors text-white">
-            <GithubIcon size={24} />
-          </a>
-        </div>
-      </div>
-
-      <div className="flex-1 flex justify-center lg:justify-end">
-        <div className="relative w-80 h-80 md:w-[400px] md:h-[400px]">
-          <div className="absolute inset-0 border-2 border-emerald-500/30 rounded-full translate-x-4 translate-y-4 animate-pulse"></div>
-          <div className="w-full h-full rounded-full bg-slate-800 overflow-hidden border-4 border-slate-700 shadow-2xl">
-             {/* Aquí puedes poner tu foto luego */}
-             <div className="w-full h-full flex items-center justify-center text-slate-600">
-                <LucideIcons.User size={120} />
-             </div>
+          <div className="flex items-center gap-4">
+            <a href="https://github.com/MANUEL666GAMER" target="_blank" rel="noopener noreferrer" className="p-3 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-white rounded-xl transition-colors">
+              <Github size={20} />
+            </a>
+            <a href="#" target="_blank" rel="noopener noreferrer" className="p-3 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-white rounded-xl transition-colors">
+              <Linkedin size={20} />
+            </a>
           </div>
         </div>
       </div>
+
+      {/* FOTO (Lado Derecho) */}
+      <div className="flex-1 flex justify-center md:justify-end">
+        {/* Contenedor de la imagen con efecto de bordes */}
+        <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-8 border-white dark:border-[#0f172a] shadow-2xl group">
+          <img
+            src="/MYIMG/YO.jpg"  /* <-- AQUÍ ESTÁ LLAMANDO A TU FOTO */
+            alt="Manuel Yovani Pérez"
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          />
+          {/* Fondo decorativo detrás de la imagen (opcional) */}
+          <div className="absolute inset-0 bg-blue-600/10 dark:bg-blue-400/10 mix-blend-overlay"></div>
+        </div>
+      </div>
+
     </section>
   );
 };
